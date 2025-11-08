@@ -31,7 +31,7 @@ WORKDIR /var/www/html
 # Copiamos primero archivos "de configuración" para aprovechar cache
 COPY composer.json composer.lock ./
 COPY package*.json ./
-COPY vite.config.* ./    # o directamente: COPY vite.config.js ./
+
 
 
 # Instalar dependencias PHP (sin dev)
