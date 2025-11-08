@@ -39,7 +39,8 @@ RUN composer install \
     --no-dev \
     --prefer-dist \
     --no-interaction \
-    --no-progress
+    --no-progress \
+    --no-scripts
 
 # Instalar dependencias JS
 RUN npm install --no-audit --no-fund
