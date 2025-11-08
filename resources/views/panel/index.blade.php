@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Grupo Berlu Cloud</title>
-    <link rel="shortcut icon" href="{{asset('image/thumb.png')}}" />
+    <link rel="shortcut icon" href="/image/thumb.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -448,7 +448,7 @@
             <div class="top-right">
                 <div id="clock" class="clock">--:--:--</div>
                 <div id="conn-pill" class="conn-pill conn-on">Conexión estable (ON)</div>
-                <form method="POST" action="{{ route('logout.perform') }}">
+                <form method="POST" action="{{ route('logout.perform', [], false) }}">
                     @csrf
                     <button type="submit" class="logout-btn">Cerrar sesión</button>
                 </form>
@@ -491,12 +491,13 @@
 <script>
     const CSRF = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    const URL_DATA   = "{{ route('panel.ventas.data') }}";
-    const URL_SHOW   = "{{ route('panel.ventas.show',['origen'=>'__O__','id'=>'__ID__']) }}";
-    const URL_VUPD   = "{{ route('panel.ventas.update',['origen'=>'__O__','id'=>'__ID__']) }}";
-    const URL_VFUL   = "{{ route('panel.ventas.fulfillment',['origen'=>'__O__','id'=>'__ID__']) }}";
-    const URL_SMETA  = "{{ route('panel.shipments.meta',['origen'=>'__O__','id'=>'__ID__']) }}";
-    const URL_SSTAT  = "{{ route('panel.shipments.status',['origen'=>'__O__','id'=>'__ID__']) }}";
+    const URL_DATA   = "{{ route('panel.ventas.data', [], false) }}";
+    const URL_SHOW   = "{{ route('panel.ventas.show', ['origen'=>'__O__','id'=>'__ID__'], false) }}";
+    const URL_VUPD   = "{{ route('panel.ventas.update', ['origen'=>'__O__','id'=>'__ID__'], false) }}";
+    const URL_VFUL   = "{{ route('panel.ventas.fulfillment', ['origen'=>'__O__','id'=>'__ID__'], false) }}";
+    const URL_SMETA  = "{{ route('panel.shipments.meta', ['origen'=>'__O__','id'=>'__ID__'], false) }}";
+    const URL_SSTAT  = "{{ route('panel.shipments.status', ['origen'=>'__O__','id'=>'__ID__'], false) }}";
+
 
     function buildUrl(template, origen, id) {
         return template.replace('__O__', origen).replace('__ID__', id);
